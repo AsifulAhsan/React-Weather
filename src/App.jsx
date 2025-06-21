@@ -3,7 +3,7 @@ import WeatherCard from "./components/WeatherCard";
 
 function App() {
   return (
-    <div className="mr-4">
+    <div className="m-8">
       <h1 className="flex justify-center mt-4 font-medium text-4xl">
         React Weather
       </h1>

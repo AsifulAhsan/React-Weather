@@ -76,7 +76,7 @@ function WeatherCard() {
   }
   return (
     <div className="container mx-auto px-4 pt-6">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-300">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-150 md:w-300">
         {divisions.map((division) => {
           const data = weatherData[division.name] || {};
           const temperature = data.main?.temp ? (data.main.temp - 273.15).toFixed(1) : "N/A";
@@ -86,7 +86,7 @@ function WeatherCard() {
           return (
             <div
               key={division.name}
-              className="bg-white border-2 border-transparent cursor-pointer hover:shadow-2xl shadow-md rounded-xl w-auto h-200 p-4"
+              className="bg-white border-2 border-transparent cursor-pointer hover:shadow-2xl shadow-md rounded-xl w-auto h-250 p-4"
             >
               <div className="flex justify-between items-start">
                 <h1 className="text-3xl font-semibold">{division.name}</h1>

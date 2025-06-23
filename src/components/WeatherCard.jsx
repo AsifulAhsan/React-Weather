@@ -78,6 +78,7 @@ function WeatherCard() {
     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-6 gap-6 place-items-center">
       {divisions.map((division) => {
         const data = weatherData[division.name] || {};
+        const temperature = data.main?.temp? (data.main.temp - 273.15).toFixed(1) : "N/A";
         const weatherCondition = data.weather?.[0]?.main || "N/A";
 
         return (
@@ -90,6 +91,8 @@ function WeatherCard() {
                 {division.name}
               </h1>
               <p className="border-1 border-transparent bg-gray-200 text-black font-medium rounded-lg px-2">{weatherCondition}</p>
+              <h1 className="text-5xl pt-6 font-medium">{temperature}°C</h1>
+              <p className="text-gray-600">Current Temperature</p>
             </div>
           </div>
         );

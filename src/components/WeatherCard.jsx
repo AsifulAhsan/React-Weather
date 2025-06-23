@@ -9,8 +9,8 @@ import {
 } from "lucide-react";
 function WeatherCard() {
   const divisions = [
-    { name: "Dhaka", lat: 23.8103, lon: 90.4125 },
-    { name: "Chittagong", lat: 22.3569, lon: 91.7832 },
+    { name: "Dhaka", lat: 23.777176, lon: 90.399452 },
+    { name: "Chittagong", lat: 22.341900, lon: 91.815536 },
     { name: "Rajshahi", lat: 24.3745, lon: 88.6042 },
     { name: "Khulna", lat: 22.8456, lon: 89.55 },
     { name: "Barisal", lat: 22.701, lon: 90.3652 },
@@ -86,6 +86,8 @@ function WeatherCard() {
         const wSpeed = data.wind?.speed ? (data.wind.speed * 3.6).toFixed(1) : "N/A";
         const pressure = data.main?.pressure || "N/A";
         const visibility = data.visibility? (data.visibility / 1000).toFixed(1) :"N/A";
+        const cityName = data.name || "N/A";
+        const dataTime = data.dt ? new Date(data.dt * 1000).toLocaleString() : "N/A";
         return (
           <div
             key={divisions.name}
@@ -119,8 +121,8 @@ function WeatherCard() {
                 <div className="font-medium">{pressure}hPa</div>
               </div>
             </div>
-            <div className="h-max bg-amber-200 p-4 mr-4 ml-4 rounded-lg mt-8">
-              ??
+            <div className="h-max bg-amber-200 p-4 mr-4 ml-4 rounded-lg mt-8 text-center text-black">
+              Time & Date: {dataTime}
             </div>
           </div>
         );

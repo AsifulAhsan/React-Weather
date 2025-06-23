@@ -104,25 +104,25 @@ function WeatherCard() {
             <div className="flex justify-center gap-6 mt-8">
               <div className="border-2 border-amber-300 px-6 py-2 h-[80px] w-[150px] rounded-lg">
                 <div className="">Humidity</div>
-                <div className="font-medium">{humidity}%</div>
+                <div className="font-medium">{humidity} %</div>
               </div>
               <div className="border-2 border-amber-300 px-6 py-2 h-[80px] w-[150px] rounded-lg">
                 <div className="">Wind Speed</div>
-                <div className="font-medium">{wSpeed}km/h</div>
+                <div className="font-medium">{wSpeed} km/h</div>
               </div>
             </div>
             <div className="flex justify-center gap-6 mt-4">
               <div className="border-2 border-amber-300 px-6 py-2 h-[80px] w-[150px] rounded-lg">
                 <div className="">Visibility</div>
-                <div className="font-medium">{visibility}°</div>
+                <div className="font-medium">{visibility} °</div>
               </div>
               <div className="border-2 border-amber-300 px-6 py-2 h-[80px] w-[150px] rounded-lg">
                 <div className="">Pressure</div>
-                <div className="font-medium">{pressure}hPa</div>
+                <div className="font-medium">{pressure} hPa</div>
               </div>
             </div>
             <div className="h-max bg-amber-200 p-4 mr-4 ml-4 rounded-lg mt-8 text-center text-black">
-              Time & Date: {dataTime}
+              Time: {dataTime}
             </div>
           </div>
         );

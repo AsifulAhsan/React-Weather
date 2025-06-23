@@ -78,21 +78,49 @@ function WeatherCard() {
     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-6 gap-6 place-items-center">
       {divisions.map((division) => {
         const data = weatherData[division.name] || {};
-        const temperature = data.main?.temp? (data.main.temp - 273.15).toFixed(1) : "N/A";
+        const temperature = data.main?.temp
+          ? (data.main.temp - 273.15).toFixed(1)
+          : "N/A";
         const weatherCondition = data.weather?.[0]?.main || "N/A";
-
+        const humidity = data.main?.humidity || "N/A";
+        const wSpeed = data.wind?.speed ? (data.wind.speed * 3.6).toFixed(1) : "N/A";
+        const pressure = data.main?.pressure || "N/A";
+        const visibility = data.visibility? (data.visibility / 1000).toFixed(1) :"N/A";
         return (
           <div
             key={divisions.name}
-            className="bg-white border-2 border-transparent rounded-2xl w-[400px] h-[800px] p-4 hover:shadow-2xl shadow-md cursor-pointer"
+            className="bg-white border-2 border-transparent rounded-2xl w-[400px] h-[800px] p-4 hover:shadow-2xl shadow-sm cursor-pointer"
           >
             <div className="flex flex-col items-center gap-4 pt-2">
-              <h1 className="text-3xl font-semibold">
-                {division.name}
-              </h1>
-              <p className="border-1 border-transparent bg-gray-200 text-black font-medium rounded-lg px-2">{weatherCondition}</p>
+              <h1 className="text-3xl font-semibold">{division.name}</h1>
+              <p className="border-1 border-transparent bg-gray-200 text-black font-medium rounded-lg px-2">
+                {weatherCondition}
+              </p>
               <h1 className="text-5xl pt-6 font-medium">{temperature}°C</h1>
               <p className="text-gray-600">Current Temperature</p>
+            </div>
+            <div className="flex justify-center gap-6 mt-8">
+              <div className="border-2 border-amber-300 px-6 py-2 h-[80px] w-[150px] rounded-lg">
+                <div className="">Humidity</div>
+                <div className="font-medium">{humidity}%</div>
+              </div>
+              <div className="border-2 border-amber-300 px-6 py-2 h-[80px] w-[150px] rounded-lg">
+                <div className="">Wind Speed</div>
+                <div className="font-medium">{wSpeed}km/h</div>
+              </div>
+            </div>
+            <div className="flex justify-center gap-6 mt-4">
+              <div className="border-2 border-amber-300 px-6 py-2 h-[80px] w-[150px] rounded-lg">
+                <div className="">Visibility</div>
+                <div className="font-medium">{visibility}°</div>
+              </div>
+              <div className="border-2 border-amber-300 px-6 py-2 h-[80px] w-[150px] rounded-lg">
+                <div className="">Pressure</div>
+                <div className="font-medium">{pressure}hPa</div>
+              </div>
+            </div>
+            <div className="h-max bg-amber-200 p-4 mr-4 ml-4 rounded-lg mt-8">
+              ??
             </div>
           </div>
         );

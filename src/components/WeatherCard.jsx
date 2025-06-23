@@ -1,13 +1,6 @@
 import React, { useState, useEffect } from "react";
 import WeatherChart from "./WeatherChart";
-import {
-  CloudRainWind,
-  Droplets,
-  Wind,
-  Eye,
-  ArrowRightLeft,
-  CloudOff,
-} from "lucide-react";
+
 function WeatherCard() {
   const divisions = [
     { name: "Dhaka", lat: 23.777176, lon: 90.399452 },
@@ -75,6 +68,7 @@ function WeatherCard() {
   if (!weatherData) {
     return <div className="text-center">No data available</div>;
   }
+
   return (
     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-6 m-8 sm:m-8 md:max-2xl:m-0 gap-6 place-items-center">
       {divisions.map((division) => {
@@ -94,10 +88,11 @@ function WeatherCard() {
         const dataTime = data.dt
           ? new Date(data.dt * 1000).toLocaleString()
           : "N/A";
+
         return (
           <div
             key={divisions.name}
-            className="bg-white border-2 border-transparent rounded-2xl w-[400px] h-[800px] p-4 hover:shadow-2xl shadow-sm cursor-pointer"
+            className="bg-white border-2 border-transparent rounded-2xl w-[400px] min-h-[700px] p-4 hover:shadow-2xl shadow-sm cursor-pointer flex flex-col"
           >
             <div className="flex flex-col items-center gap-4 pt-2">
               <h1 className="text-3xl font-semibold">{division.name}</h1>
@@ -130,8 +125,8 @@ function WeatherCard() {
             <div className="h-max bg-amber-200 p-4 mr-4 ml-4 rounded-lg mt-8 text-center text-black">
               Time: {dataTime}
             </div>
-            <div className="bg-slate-300">
-              
+            <div className="">
+              <WeatherChart />
             </div>
           </div>
         );

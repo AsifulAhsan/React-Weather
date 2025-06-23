@@ -77,12 +77,20 @@ function WeatherCard() {
   return (
     <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-6 gap-6 place-items-center">
       {divisions.map((division) => {
+        const data = weatherData[division.name] || {};
+        const weatherCondition = data.weather?.[0]?.main || "N/A";
+
         return (
           <div
             key={divisions.name}
-            className="bg-white border-2 border-transparent rounded-2xl w-[400px] h-[800px] p-4"
+            className="bg-white border-2 border-transparent rounded-2xl w-[400px] h-[800px] p-4 hover:shadow-2xl shadow-md cursor-pointer"
           >
-            
+            <div className="flex flex-col items-center gap-4 pt-2">
+              <h1 className="text-3xl font-semibold">
+                {division.name}
+              </h1>
+              <p className="border-1 border-transparent bg-gray-200 text-black font-medium rounded-lg px-2">{weatherCondition}</p>
+            </div>
           </div>
         );
       })}

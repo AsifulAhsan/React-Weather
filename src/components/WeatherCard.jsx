@@ -75,7 +75,7 @@ function WeatherCard() {
     return <div className="text-center">No data available</div>;
   }
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-6 m-8 sm:m-8 gap-6 place-items-center">
+    <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3 pt-6 m-8 sm:m-8 md:max-2xl:m-0 gap-6 place-items-center">
       {divisions.map((division) => {
         const data = weatherData[division.name] || {};
         const temperature = data.main?.temp

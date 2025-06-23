@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import WeatherChart from "./WeatherChart";
 import {
   CloudRainWind,
   Droplets,
@@ -10,7 +11,7 @@ import {
 function WeatherCard() {
   const divisions = [
     { name: "Dhaka", lat: 23.777176, lon: 90.399452 },
-    { name: "Chittagong", lat: 22.341900, lon: 91.815536 },
+    { name: "Chittagong", lat: 22.3419, lon: 91.815536 },
     { name: "Rajshahi", lat: 24.3745, lon: 88.6042 },
     { name: "Khulna", lat: 22.8456, lon: 89.55 },
     { name: "Barisal", lat: 22.701, lon: 90.3652 },
@@ -83,11 +84,16 @@ function WeatherCard() {
           : "N/A";
         const weatherCondition = data.weather?.[0]?.main || "N/A";
         const humidity = data.main?.humidity || "N/A";
-        const wSpeed = data.wind?.speed ? (data.wind.speed * 3.6).toFixed(1) : "N/A";
+        const wSpeed = data.wind?.speed
+          ? (data.wind.speed * 3.6).toFixed(1)
+          : "N/A";
         const pressure = data.main?.pressure || "N/A";
-        const visibility = data.visibility? (data.visibility / 1000).toFixed(1) :"N/A";
-        const cityName = data.name || "N/A";
-        const dataTime = data.dt ? new Date(data.dt * 1000).toLocaleString() : "N/A";
+        const visibility = data.visibility
+          ? (data.visibility / 1000).toFixed(1)
+          : "N/A";
+        const dataTime = data.dt
+          ? new Date(data.dt * 1000).toLocaleString()
+          : "N/A";
         return (
           <div
             key={divisions.name}
@@ -114,7 +120,7 @@ function WeatherCard() {
             <div className="flex justify-center gap-6 mt-4">
               <div className="border-2 border-amber-300 px-6 py-2 h-[80px] w-[150px] rounded-lg">
                 <div className="">Visibility</div>
-                <div className="font-medium">{visibility} °</div>
+                <div className="font-medium">{visibility} km</div>
               </div>
               <div className="border-2 border-amber-300 px-6 py-2 h-[80px] w-[150px] rounded-lg">
                 <div className="">Pressure</div>
@@ -123,6 +129,9 @@ function WeatherCard() {
             </div>
             <div className="h-max bg-amber-200 p-4 mr-4 ml-4 rounded-lg mt-8 text-center text-black">
               Time: {dataTime}
+            </div>
+            <div className="bg-slate-300">
+              
             </div>
           </div>
         );
